@@ -5,35 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notion Uhr Widget</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
     
     body {
         margin: 0;
-        background-color: black;
-        color: white;
-        font-family: 'Roboto Mono', monospace;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        overflow: hidden;
+        background-color: transparent;
+    }
+    .clock-container {
+        width: 300px;
+        height: 300px;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
     }
     .clock {
         text-align: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .location {
+        font-size: 1.15em; /* 15% größer */
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        color: black;
     }
     .time {
         font-size: 3.5em;
+        color: black;
+        text-align: center;
     }
-    .location, .date {
-        font-size: 1em;
+    .date {
+        font-size: 1.15em; /* 15% größer */
+        position: absolute;
+        bottom: 10%;
+        right: 10%;
+        transform: translate(50%, 50%);
+        color: black;
     }
 </style>
 </head>
 <body>
-<div class="clock">
-    <div class="location">ZÜRICH</div>
-    <div class="time" id="time">00:00</div>
-    <div class="date" id="date">01.01.01</div>
+<div class="clock-container">
+    <div class="clock">
+        <div class="location">ZÜRICH</div>
+        <div class="time" id="time">00:00</div>
+        <div class="date" id="date">01.01.01</div>
+    </div>
 </div>
 <script>
     function updateTime() {
