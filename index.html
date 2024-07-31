@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notion Uhr Widget</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+    
+    body {
+        margin: 0;
+        background-color: black;
+        color: white;
+        font-family: 'Roboto Mono', monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .clock {
+        text-align: center;
+    }
+    .time {
+        font-size: 3.5em;
+    }
+    .location, .date {
+        font-size: 1em;
+    }
+</style>
+</head>
+<body>
+<div class="clock">
+    <div class="location">ZÜRICH</div>
+    <div class="time" id="time">00:00</div>
+    <div class="date" id="date">01.01.01</div>
+</div>
+<script>
+    function updateTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = String(now.getFullYear()).slice(-2);
+
+        document.getElementById('time').textContent = `${hours}:${minutes}`;
+        document.getElementById('date').textContent = `${day}.${month}.${year}`;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+</script>
+</body>
+</html>
