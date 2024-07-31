@@ -16,57 +16,33 @@
         background-color: transparent;
     }
     .clock-container {
-        width: 220px; /* Erhöhung der Breite und Höhe für Padding */
-        height: 220px;
-        border: 2px solid black;
+        padding: 20px; /* Padding rundherum */
+        border: 5pt solid black; /* Schwarzer Rahmen */
+        border-radius: 10%; /* Abgerundete Ecken 10% */
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 10px; /* Padding für gleichen Abstand rundherum */
-        box-sizing: border-box;
-    }
-    .clock {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Links ausgerichtet */
-        width: 100%;
-    }
-    .location, .time, .date {
-        font-family: 'Orbitron', sans-serif;
-        color: black;
-        text-align: left;
-    }
-    .location {
-        font-size: 1.15em; /* 15% größer */
+        background-color: transparent; /* Transparenter Hintergrund */
     }
     .time {
-        font-size: 3.5em;
-    }
-    .date {
-        font-size: 1.15em; /* 15% größer */
+        font-family: 'Orbitron', sans-serif;
+        font-size: 300pt;
+        color: black;
+        text-align: center;
     }
 </style>
 </head>
 <body>
 <div class="clock-container">
-    <div class="clock">
-        <div class="location">ZÜRICH</div>
-        <div class="time" id="time">00:00</div>
-        <div class="date" id="date">01.01.01</div>
-    </div>
+    <div class="time" id="time">00:00</div>
 </div>
 <script>
     function updateTime() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const year = String(now.getFullYear()).slice(-2);
 
         document.getElementById('time').textContent = `${hours}:${minutes}`;
-        document.getElementById('date').textContent = `${day}.${month}.${year}`;
     }
 
     setInterval(updateTime, 1000);
